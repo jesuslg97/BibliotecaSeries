@@ -2,17 +2,17 @@
     class Actor {
         private $id;
         private $name;
-        private $surname;
-        private $birth_date;
-        private $from;
+        private $surnames;
+        private $date;
+        private $nationality;
 
-        public function __construct($idActor, $nameActor,$surnameActor,$birthActor,$fromActor)
+        public function __construct($idActor, $nameActor,$surnamesActor,$datehActor,$nationalityActor)
         {
             $this->id = $idActor;
             $this->name = $nameActor;
-            $this->surname = $surnameActor;
-            $this->birth_date = $birthActor;
-            $this->from = $fromActor;
+            $this->surname = $surnamesActor;
+            $this->date = $dateActor;
+            $this->nationality = $nationalityActor;
         }
 
         /**
@@ -47,34 +47,34 @@
             $this->name = $name;
         }
 
-        public function getSurname(){
+        public function getSurnames(){
 
-            return $this->surname;
+            return $this->surnames;
         }
 
-        public function setSurname($surname){
+        public function setSurname($surnames){
 
-            $this->surname = $surname;
+            $this->surnames = $surnames;
         }
 
-        public function getBirthDate(){
+        public function getDate(){
 
-            return $this->birth_date;
+            return $this->date;
         }
 
-        public function setBirthDate($birth_date){
+        public function setDate($date){
 
-            $this->birth_date = $birth_date;
+            $this->date = $date;
         }
 
         public function getFrom(){
 
-            return $this->from;
+            return $this->nationality;
         }
 
-        public function setFrom($from){
+        public function setFrom($nationality){
 
-            $this->from = $from;
+            $this->nationality = $nationality;
         }
 
     }

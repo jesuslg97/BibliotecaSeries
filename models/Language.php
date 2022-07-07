@@ -1,14 +1,14 @@
 <?php
-    class Lang {
+    class Language {
         private $id;
         private $name;
-        private $iso;
+        private $ISOcode;
 
-        public function __construct($idLang, $nameLang,$isoLang)
+        public function __construct($idLanguage, $nameLanguage,$ISOcodeLanguage)
         {
-            $this->id = $idLang;
-            $this->name = $nameLang;
-            $this->iso = $isoLang;
+            $this->id = $idLanguage;
+            $this->name = $nameLanguage;
+            $this->ISOcode = $ISOcodeLanguage;
         }
 
         /**
@@ -45,12 +45,12 @@
 
         public function getIso(){
 
-            return $this->iso;
+            return $this->ISOcode;
         }
 
-        public function setIso($iso){
+        public function setIso($ISOcode){
 
-            $this->iso = $iso;
+            $this->ISOcode = $ISOcode;
         }
 
 
