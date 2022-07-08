@@ -64,6 +64,7 @@
                 <?php
                     }
                 ?>
+                <a class="btn btn-primary" href="../../index.html">Volver</a>
             </div>
         </div>
     </div>

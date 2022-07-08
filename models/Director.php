@@ -6,11 +6,11 @@
         private $date;
         private $nationality;
 
-        public function __construct($idActor, $nameActor,$surnamesActor,$datehActor,$nationalityActor)
+        public function __construct($idActor, $nameActor,$surnamesActor,$dateActor,$nationalityActor)
         {
             $this->id = $idActor;
             $this->name = $nameActor;
-            $this->surname = $surnamesActor;
+            $this->surnames = $surnamesActor;
             $this->date = $dateActor;
             $this->nationality = $nationalityActor;
         }
@@ -52,7 +52,7 @@
             return $this->surnames;
         }
 
-        public function setSurname($surnames){
+        public function setSurnames($surnames){
 
             $this->surnames = $surnames;
         }
@@ -67,12 +67,12 @@
             $this->date = $date;
         }
 
-        public function getFrom(){
+        public function getNationality(){
 
             return $this->nationality;
         }
 
-        public function setFrom($nationality){
+        public function setNationality($nationality){
 
             $this->nationality = $nationality;
         }
