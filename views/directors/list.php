@@ -44,7 +44,13 @@
                                 <td><?php echo $director->getId();?></td>
                                 <td><?php echo $director->getName();?></td>
                                 <td><?php echo $director->getSurnames();?></td>
-                                <td><?php echo $director->getDate();?></td>
+                                <td>
+                                    <?php
+                                        $date=date_create( $director->getDate());
+                                        echo date_format($date,"d/m/Y");
+                                    
+                                    ?>
+                                </td>
                                 
                                 <?php
                                     $nationalityObject = getNationalityData($director->getNationality());

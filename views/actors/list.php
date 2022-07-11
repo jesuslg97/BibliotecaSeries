@@ -44,7 +44,13 @@
                                 <td><?php echo $actor->getId();?></td>
                                 <td><?php echo $actor->getName();?></td>
                                 <td><?php echo $actor->getSurnames();?></td>
-                                <td><?php echo $actor->getDate();?></td>
+                                <td>
+                                    <?php
+                                        $date=date_create( $actor->getDate());
+                                        echo date_format($date,"d/m/Y");
+                                    
+                                    ?>
+                                </td>
                                 
                                 <?php
                                     $nationalityObject = getNationalityData($actor->getNationality());

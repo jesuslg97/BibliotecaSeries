@@ -32,15 +32,31 @@
 	}
 
 	function storePlatform ($platformName) {
-		$mysqli = initConnectionDb();
+		$platformCreated = false;
+		if(validate($platformName)){
 
-	   	$platformCreated = false;
-	   	//TODO: comprobar que no exista una plataforma con el mismo nombre
-	   	if ($resultadoInsert = $mysqli->query("INSERT INTO platforms (name) values ('$platformName')")) {
-			$platformCreated = true;
+		
+			$mysqli = initConnectionDb();
+			$platformObject = null;
+			$exist = false;
+			
+			$platformData = $mysqli->query("SELECT * FROM platforms WHERE name='$platformName'");
+			foreach($platformData as $platformItem) {
+				$platformObject = new Platform($platformItem['id'], $platformItem['name']);
+				$exist = true;
+				break;
+			}
+						
+			if(!$exist){
+				if ($resultadoInsert = $mysqli->query("INSERT INTO platforms (name) values ('$platformName')")) {
+					
+					$platformCreated = true;
+				}
+			}
+			
+			
+			$mysqli->close();
 		}
-
-		$mysqli->close();
 
 		return $platformCreated;
 	}
@@ -70,5 +86,13 @@
 		$mysqli->close();
 
 		return $platformDeleted;
+	}
+
+	function validate($platformName){
+		if(is_string($platformName)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 ?>
