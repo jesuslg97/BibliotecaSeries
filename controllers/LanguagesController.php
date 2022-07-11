@@ -87,7 +87,6 @@
 		}
 		$mysqli->close();
 		
-
 		return $languageObjectArray;
 	}
 

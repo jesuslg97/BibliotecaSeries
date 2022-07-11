@@ -126,7 +126,7 @@
                                     <?php
                                     }else{
                                     ?>     
-                                        <option value=<?php echo $actor->getId();?>><?php echo $audio->getName()?></option>
+                                        <option value=<?php echo $audio->getId();?>><?php echo $audio->getName()?></option>
                                     <?php    
                                     }
                                     ?>
@@ -150,7 +150,7 @@
                                     <?php
                                     }else{
                                     ?>     
-                                        <option value=<?php echo $actor->getId();?>><?php echo $audio->getName()?></option>
+                                        <option value=<?php echo $audio->getId();?>><?php echo $audio->getName()?></option>
                                     <?php    
                                     }
                                     ?>
@@ -173,7 +173,7 @@
                     ?>
                     <div class="row">
                         <div class="alert alert-success" role="alert">
-                            Serie editado correctamente.<br><a href="list.php">Volver al listado de seriees.</a>
+                            Serie editado correctamente.<br><a href="list.php">Volver al listado de series.</a>
                         </div>
                     </div>
                     <?php

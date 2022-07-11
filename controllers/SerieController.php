@@ -25,7 +25,7 @@
 
         $serieCreated = false;
         //TODO: comprobar que no exista una plataforma con el mismo nombre
-        if ($resultadoInsert = $mysqli->query("INSERT INTO series (title,platform,serie) values ('$serieTitle','$seriePlatform','$serieDirector')")) {
+        if ($resultadoInsert = $mysqli->query("INSERT INTO series (title,platform,director) values ('$serieTitle','$seriePlatform','$serieDirector')")) {
             $id = mysqli_insert_id($mysqli);
 
 
@@ -34,11 +34,11 @@
             }
     
             foreach($serieAudios as $audio){
-                $mysqli->query("INSERT INTO serie_series (serie_id,serie_id,type) values ('$id','$audio','audio')");
+                $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$id','$audio','audio')");
             }
     
             foreach($serieSubtitles as $subtitles){
-                $mysqli->query("INSERT INTO serie_series (serie_id,serie_id,type) values ('$id','$subtitles','subtitle')");
+                $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$id','$subtitles','subtitle')");
             }
 
 
@@ -91,6 +91,26 @@
 		$serieEdited = false;
 
 	   	if ($resultadoUpdate = $mysqli->query("UPDATE series set title = '$serieTitle',platform='$seriePlatform',director='$serieDirector' where id =  $serieId")) {
+            
+            $mysqli->query("DELETE FROM serie_actors where serie_id = $serieId");
+
+            foreach($serieActors as $actor){
+                $mysqli->query("INSERT INTO serie_actors (serie_id,actor_id) values ('$serieId','$actor')");
+            }
+
+
+            $mysqli->query("DELETE FROM serie_languages where serie_id = $serieId");
+
+            foreach($serieAudios as $audio){
+                $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$serieId','$audio','audio')");
+            }
+    
+            foreach($serieSubtitles as $subtitles){
+                $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$serieId','$subtitles','subtitle')");
+            }
+
+           
+
 			$serieEdited = true;
 		}
 

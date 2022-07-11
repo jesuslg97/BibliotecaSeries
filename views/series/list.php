@@ -83,15 +83,15 @@
                                 </td>
 
                                 <td>
-                                    <select class="form-select" name="actors" id="actors">
+                                    <select class="form-select" name="audio" id="audio">
                                         <?php
                                         
-                                            $actorObject = getSerieAudio($serie->getId());
-                                            foreach($actorObject as $actor){   
+                                            $audioObject = getSerieAudio($serie->getId());
+                                            foreach($audioObject as $audio){   
                                                    
                                         ?>
 
-                                            <option value=<?php echo $actor->getId();?>><?php echo $actor->getName()?></option>
+                                            <option value=<?php echo $audio->getId();?>><?php echo $audio->getName()?></option>
 
                                         <?php
                                             }
@@ -100,15 +100,15 @@
                                 </td>
 
                                 <td>
-                                    <select class="form-select" name="actors" id="actors">
+                                    <select class="form-select" name="subtitles" id="subtitles">
                                         <?php
                                         
-                                            $actorObject = getSerieSubtitles($serie->getId());
-                                            foreach($actorObject as $actor){   
+                                            $subtitleObject = getSerieSubtitles($serie->getId());
+                                            foreach($subtitleObject as $subtitle){   
                                                    
                                         ?>
 
-                                            <option value=<?php echo $actor->getId();?>><?php echo $actor->getName()?></option>
+                                            <option value=<?php echo $subtitle->getId();?>><?php echo $subtitle->getName()?></option>
 
                                         <?php
                                             }
