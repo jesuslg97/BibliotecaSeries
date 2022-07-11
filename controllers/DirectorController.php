@@ -20,7 +20,7 @@
 	}
 
 	function getDirectorData($idDirector) {
-
+		
 		$mysqli = initConnectionDb();
 		$directorData = $mysqli->query("SELECT * FROM directors WHERE id=$idDirector");
 		$directorObject = null;

@@ -51,11 +51,15 @@
                                     $nationalitiesList = listNationalities();
                                     foreach($nationalitiesList as $nationality) {
                                 ?>
-                                        <?php if(isset($actorObject) && ($nationality->getId() == $actorObject->getNationality())){ ?>
+                                       <?php if(isset($actorObject) && ($nationality->getId() == $actorObject->getNationality())){ ?>
                                             <option selected value=<?php echo $nationality->getId();?>><?php echo $nationality->getName()?></option>
                                         <?php 
-                                            }
+                                            }else{
                                         ?> 
+                                        <option value=<?php echo $nationality->getId();?>><?php echo $nationality->getName()?></option>
+                                        <?php
+                                            }
+                                        ?>
                                 <?php       
                                     }
                                 ?>

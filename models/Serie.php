@@ -4,19 +4,14 @@
         private $title;
         private $platform;
         private $director;
-        private $actor;
-        private $audio;
-        private $subtitle;
 
-        public function __construct($idSerie,$titleSerie,$platformSerie,$directorSerie,$actorSerie,$audioSerie,$subtitleSerie)
+        public function __construct($idSerie,$titleSerie,$platformSerie,$directorSerie)
         {
             $this->id = $idSerie;
             $this->title  = $titleSerie;
             $this->platform  = $platformSerie;
             $this->director  = $directorSerie;
-            $this->actor  = $actorSerie;
-            $this->audio  = $audioSerie;
-            $this->subtitle  = $subtitleSerie;
+
             
         }
 
@@ -70,36 +65,6 @@
         public function setDirector($director){
 
             $this->director = $director;
-        }
-
-        public function getActor(){
-
-            return $this->actor;
-        }
-
-        public function setActor($actor){
-
-            $this->actor = $actor;
-        }
-
-        public function getAudio(){
-
-            return $this->audio;
-        }
-
-        public function setAudio($audio){
-
-            $this->audio = $audio;
-        }
-
-        public function getSubtitle(){
-
-            return $this->subtitle;
-        }
-
-        public function setSubtitle($subtitle){
-
-            $this->subtitle = $subtitle;
         }
 
     }

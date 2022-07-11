@@ -25,7 +25,7 @@
 		$actorData = $mysqli->query("SELECT * FROM actors WHERE id=$idActor");
 		$actorObject = null;
 		foreach($actorData as $actorItem) {
-			$actorObject = new Actor($$actorItem['id'], $actorItem['name'],$actorItem['surnames'],$actorItem['date'],$actorItem['nationality']);
+			$actorObject = new Actor($actorItem['id'], $actorItem['name'],$actorItem['surnames'],$actorItem['date'],$actorItem['nationality']);
 			break;
 		}
 		$mysqli->close();
@@ -34,7 +34,7 @@
 
 	function storeActor ($actorName,$actorSurnames,$actorDate,$actorNationality) {
 		$mysqli = initConnectionDb();
-
+	
 	   	$actorCreated = false;
 	   	//TODO: comprobar que no exista una plataforma con el mismo nombre
 	   	if ($resultadoInsert = $mysqli->query("INSERT INTO actors (name,surnames,date,nationality) values ('$actorName','$actorSurnames','$actorDate','$actorNationality')")) {
@@ -52,6 +52,9 @@
 
 		$actorDeleted = false;
 		if ($resultado = $mysqli->query("DELETE FROM actors where id = $idActor")) {
+
+			$mysqli->query("DELETE FROM serie_actors where actor_id = $idActor");
+
 			$actorDeleted = true;
 		}
 
@@ -74,6 +77,22 @@
 		$mysqli->close();
 
 		return $actorEdited;
+	}
+
+	function getSerieActor($serieId){
+		
+		$mysqli = initConnectionDb();
+		$actorData = $mysqli->query("SELECT a.id,a.name,a.surnames,a.date,a.nationality FROM actors a inner join serie_actors sa on a.id = sa.actor_id WHERE sa.serie_id=$serieId");
+		
+		$actorObjectArray = [];
+		foreach($actorData as $actorItem) {
+			$actorObject = new Actor($actorItem['id'], $actorItem['name'],$actorItem['surnames'],$actorItem['date'],$actorItem['nationality']);
+			array_push($actorObjectArray, $actorObject);
+		}
+		$mysqli->close();
+		
+
+		return $actorObjectArray;
 	}
 
 

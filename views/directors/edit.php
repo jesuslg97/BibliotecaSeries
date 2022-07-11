@@ -54,8 +54,12 @@
                                         <?php if(isset($directorObject) && ($nationality->getId() == $directorObject->getNationality())){ ?>
                                             <option selected value=<?php echo $nationality->getId();?>><?php echo $nationality->getName()?></option>
                                         <?php 
-                                            }
+                                            }else{
                                         ?> 
+                                        <option value=<?php echo $nationality->getId();?>><?php echo $nationality->getName()?></option>
+                                        <?php
+                                            }
+                                        ?>
                                 <?php       
                                     }
                                 ?>
