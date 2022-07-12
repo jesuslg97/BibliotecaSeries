@@ -20,32 +20,42 @@
 	}
 
     function storeSerie($serieTitle,$seriePlatform,$serieDirector,$serieActors,$serieAudios,$serieSubtitles){
-        
-        $mysqli = initConnectionDb();
-
         $serieCreated = false;
-        //TODO: comprobar que no exista una plataforma con el mismo nombre
-        if ($resultadoInsert = $mysqli->query("INSERT INTO series (title,platform,director) values ('$serieTitle','$seriePlatform','$serieDirector')")) {
-            $id = mysqli_insert_id($mysqli);
+        if(serieValidate($serieTitle)){
+            $mysqli = initConnectionDb();
+            $exist = false;
+
+			$serieData = $mysqli->query("SELECT * FROM series WHERE title='$serieTitle'");
+			foreach($serieData as $serieItem) {
+				$exist = true;
+				break;
+			}
+			if(!$exist){
+        
+            
+                if ($resultadoInsert = $mysqli->query("INSERT INTO series (title,platform,director) values ('$serieTitle','$seriePlatform','$serieDirector')")) {
+                    $id = mysqli_insert_id($mysqli);
 
 
-            foreach($serieActors as $actor){
-                $mysqli->query("INSERT INTO serie_actors (serie_id,actor_id) values ('$id','$actor')");
+                    foreach($serieActors as $actor){
+                        $mysqli->query("INSERT INTO serie_actors (serie_id,actor_id) values ('$id','$actor')");
+                    }
+            
+                    foreach($serieAudios as $audio){
+                        $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$id','$audio','audio')");
+                    }
+            
+                    foreach($serieSubtitles as $subtitles){
+                        $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$id','$subtitles','subtitle')");
+                    }
+
+
+                    $serieCreated = true;
+                }
             }
-    
-            foreach($serieAudios as $audio){
-                $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$id','$audio','audio')");
-            }
-    
-            foreach($serieSubtitles as $subtitles){
-                $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$id','$subtitles','subtitle')");
-            }
 
-
-            $serieCreated = true;
+            $mysqli->close();
         }
-
-        $mysqli->close();
 
         return $serieCreated;
         
@@ -84,41 +94,59 @@
     }
 
     function updateSerie($serieId,$serieTitle,$seriePlatform,$serieDirector,$serieActors,$serieAudios,$serieSubtitles){
+        $serieEdited = false;
+        if(serieValidate($serieTitle)){
+            $mysqli = initConnectionDb();
+            $exist = false;
 
-        $mysqli = initConnectionDb();
+			$serieData = $mysqli->query("SELECT * FROM series WHERE title='$serieTitle'");
+			foreach($serieData as $serieItem) {
+				$exist = true;
+				break;
+			}
+			if(!$exist){
 
-
-		$serieEdited = false;
-
-	   	if ($resultadoUpdate = $mysqli->query("UPDATE series set title = '$serieTitle',platform='$seriePlatform',director='$serieDirector' where id =  $serieId")) {
             
-            $mysqli->query("DELETE FROM serie_actors where serie_id = $serieId");
 
-            foreach($serieActors as $actor){
-                $mysqli->query("INSERT INTO serie_actors (serie_id,actor_id) values ('$serieId','$actor')");
+                if ($resultadoUpdate = $mysqli->query("UPDATE series set title = '$serieTitle',platform='$seriePlatform',director='$serieDirector' where id =  $serieId")) {
+                    
+                    $mysqli->query("DELETE FROM serie_actors where serie_id = $serieId");
+
+                    foreach($serieActors as $actor){
+                        $mysqli->query("INSERT INTO serie_actors (serie_id,actor_id) values ('$serieId','$actor')");
+                    }
+
+
+                    $mysqli->query("DELETE FROM serie_languages where serie_id = $serieId");
+
+                    foreach($serieAudios as $audio){
+                        $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$serieId','$audio','audio')");
+                    }
+            
+                    foreach($serieSubtitles as $subtitles){
+                        $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$serieId','$subtitles','subtitle')");
+                    }
+
+                
+
+                    $serieEdited = true;
+                }
             }
 
-
-            $mysqli->query("DELETE FROM serie_languages where serie_id = $serieId");
-
-            foreach($serieAudios as $audio){
-                $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$serieId','$audio','audio')");
-            }
-    
-            foreach($serieSubtitles as $subtitles){
-                $mysqli->query("INSERT INTO serie_languages (serie_id,language_id,type) values ('$serieId','$subtitles','subtitle')");
-            }
-
-           
-
-			$serieEdited = true;
-		}
-
-		$mysqli->close();
+            $mysqli->close();
+        }
 
 		return $serieEdited;
 
     }
+
+    function serieValidate($serieTitle){
+		if(is_string($serieTitle)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 
 ?>

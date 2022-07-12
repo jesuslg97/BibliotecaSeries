@@ -37,12 +37,10 @@
 
 		
 			$mysqli = initConnectionDb();
-			$platformObject = null;
 			$exist = false;
 			
 			$platformData = $mysqli->query("SELECT * FROM platforms WHERE name='$platformName'");
 			foreach($platformData as $platformItem) {
-				$platformObject = new Platform($platformItem['id'], $platformItem['name']);
 				$exist = true;
 				break;
 			}
@@ -62,16 +60,24 @@
 	}
 
 	function updatePlatform ($platformId, $platformName) {
-		$mysqli = initConnectionDb();
-
 		$platformEdited = false;
+		if(validate($platformName)){
+			$mysqli = initConnectionDb();
+			$exist = false;
+			
+			$platformData = $mysqli->query("SELECT * FROM platforms WHERE name='$platformName'");
+			foreach($platformData as $platformItem) {
+				$exist = true;
+				break;
+			}
+			if(!$exist){
+				if ($resultadoUpdate = $mysqli->query("UPDATE platforms set name = '$platformName' where id =  $platformId")) {
+					$platformEdited = true;
+				}
+			}
 
-	   	if ($resultadoUpdate = $mysqli->query("UPDATE platforms set name = '$platformName' where id =  $platformId")) {
-			$platformEdited = true;
+			$mysqli->close();
 		}
-
-		$mysqli->close();
-
 		return $platformEdited;
 	}
 

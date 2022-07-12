@@ -33,15 +33,26 @@
 	}
 
     function storeNationality ($nationalityName) {
-		$mysqli = initConnectionDb();
+		$nationalityCreated = false;
+		if(validate($nationalityName)){
+			$mysqli = initConnectionDb();
+			$exist = false;
 
-	   	$nationalityCreated = false;
-	   	//TODO: comprobar que no exista una plataforma con el mismo nombre
-	   	if ($resultadoInsert = $mysqli->query("INSERT INTO nationalities (name) values ('$nationalityName')")) {
-			$nationalityCreated = true;
+			$nationalityData = $mysqli->query("SELECT * FROM nationalities WHERE name='$nationalityName'");
+			foreach($nationalityData as $nationalityItem) {
+				$exist = true;
+				break;
+			}
+			if(!$exist){
+			
+			
+				if ($resultadoInsert = $mysqli->query("INSERT INTO nationalities (name) values ('$nationalityName')")) {
+					$nationalityCreated = true;
+				}
+			}
+
+			$mysqli->close();
 		}
-
-		$mysqli->close();
 
 		return $nationalityCreated;
 	}
@@ -57,6 +68,14 @@
 		$mysqli->close();
 
 		return $nationalityDeleted;
+	}
+
+	function validate($nationalityName){
+		if(is_string($nationalityName)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 ?>

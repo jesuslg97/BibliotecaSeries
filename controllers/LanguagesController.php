@@ -32,29 +32,48 @@
 	}
 
     function storeLanguage ($languageName,$languageISO) {
-		$mysqli = initConnectionDb();
+		$languageEdited = false;
+		if(languageValidate($languageName)){
+			$mysqli = initConnectionDb();
+			$exist = false;
+			
+			$languageData = $mysqli->query("SELECT * FROM languages WHERE name='$languageName' or ISOcode = '$languageISO'");
+			foreach($languageData as $languageItem) {
+				$exist = true;
+				break;
+			}
+			if(!$exist){
+			
+				if ($resultadoInsert = $mysqli->query("INSERT INTO languages (name,isocode) values ('$languageName','$languageISO')")) {
+					$languageCreated = true;
+				}
+			}
 
-	   	$languageCreated = false;
-	   	//TODO: comprobar que no exista una plataforma con el mismo nombre
-	   	if ($resultadoInsert = $mysqli->query("INSERT INTO languages (name,isocode) values ('$languageName','$languageISO')")) {
-			$languageCreated = true;
+			$mysqli->close();
 		}
-
-		$mysqli->close();
 
 		return $languageCreated;
 	}
 
     function updateLanguage ($languageId, $languageName, $languageISO) {
-		$mysqli = initConnectionDb();
-
 		$languageEdited = false;
+		if(languageValidate($languageName)){
+			$mysqli = initConnectionDb();
+			$exist = false;
 
-	   	if ($resultadoUpdate = $mysqli->query("UPDATE languages set name = '$languageName', isoCode = '$languageISO' where id =  $languageId")) {
-			$languageEdited = true;
+			$languageData = $mysqli->query("SELECT * FROM languages WHERE name='$languageName' or ISOcode = '$languageISO'");
+			foreach($languageData as $languageItem) {
+				$exist = true;
+				break;
+			}
+			if(!$exist){
+				if ($resultadoUpdate = $mysqli->query("UPDATE languages set name = '$languageName', isoCode = '$languageISO' where id =  $languageId")) {
+					$languageEdited = true;
+				}
+			}
+
+			$mysqli->close();
 		}
-
-		$mysqli->close();
 
 		return $languageEdited;
 	}
@@ -104,5 +123,13 @@
 		
 
 		return $languageObjectArray;
+	}
+
+	function languageValidate($languageName){
+		if(is_string($languageName)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 ?>

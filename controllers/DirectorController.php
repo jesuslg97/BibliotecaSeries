@@ -33,15 +33,28 @@
 	}
 
 	function storeDirector ($directorName,$directorSurnames,$directorDate,$directorNationality) {
-		$mysqli = initConnectionDb();
+		$directorCreated = false;
+		if(directorValidate($directorName,$directorSurnames)){
 
-	   	$directorCreated = false;
-	   	//TODO: comprobar que no exista una plataforma con el mismo nombre
-	   	if ($resultadoInsert = $mysqli->query("INSERT INTO directors (name,surnames,date,nationality) values ('$directorName','$directorSurnames','$directorDate','$directorNationality')")) {
-			$directorCreated = true;
+			
+			$mysqli = initConnectionDb();
+			$exist = false;
+			
+			$directorData = $mysqli->query("SELECT * FROM directors WHERE name='$directorName' and surnames='$directorSurnames' and date = '$directorDate' and nationality = '$directorNationality'");
+			foreach($directorData as $directorItem) {
+				$exist = true;
+				break;
+			}
+						
+			if(!$exist){
+			
+				if ($resultadoInsert = $mysqli->query("INSERT INTO directors (name,surnames,date,nationality) values ('$directorName','$directorSurnames','$directorDate','$directorNationality')")) {
+					$directorCreated = true;
+				}
+			}
+
+			$mysqli->close();
 		}
-
-		$mysqli->close();
 
 		return $directorCreated;
 	}
@@ -61,20 +74,36 @@
 	}
 
 	function updateDirector ($directorId,$directorName,$directorSurnames,$directorDate,$directorNationality) {
-		
-		$mysqli = initConnectionDb();
-
-
 		$directorEdited = false;
+		if(directorValidate($directorName,$directorSurnames)){
 
-	   	if ($resultadoUpdate = $mysqli->query("UPDATE directors set name = '$directorName',surnames='$directorSurnames',date='$directorDate',nationality='$directorNationality' where id =  $directorId")) {
-			$directorEdited = true;
+			$mysqli = initConnectionDb();
+
+			$exist = false;
+				
+				$directorData = $mysqli->query("SELECT * FROM directors WHERE name='$directorName' and surnames='$directorSurnames' and date = '$directorDate' and nationality = '$directorNationality'");
+				foreach($directorData as $directorItem) {
+					$exist = true;
+					break;
+				}
+							
+				if(!$exist){
+					if ($resultadoUpdate = $mysqli->query("UPDATE directors set name = '$directorName',surnames='$directorSurnames',date='$directorDate',nationality='$directorNationality' where id =  $directorId")) {
+						$directorEdited = true;
+					}
+				}
+
+			$mysqli->close();
 		}
-
-		$mysqli->close();
 
 		return $directorEdited;
 	}
 
-
+	function directorValidate($directorName,$directorSurnames){
+		if(is_string($directorName) && is_string($directorSurnames)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 ?>

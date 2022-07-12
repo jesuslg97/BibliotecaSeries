@@ -33,15 +33,28 @@
 	}
 
 	function storeActor ($actorName,$actorSurnames,$actorDate,$actorNationality) {
-		$mysqli = initConnectionDb();
-	
-	   	$actorCreated = false;
-	   	//TODO: comprobar que no exista una plataforma con el mismo nombre
-	   	if ($resultadoInsert = $mysqli->query("INSERT INTO actors (name,surnames,date,nationality) values ('$actorName','$actorSurnames','$actorDate','$actorNationality')")) {
-			$actorCreated = true;
-		}
+		$actorCreated = false;
+		if(actorValidate($actorName,$actorSurnames)){
 
-		$mysqli->close();
+			$mysqli = initConnectionDb();
+			$exist = false;
+			
+			$actorData = $mysqli->query("SELECT * FROM actors WHERE name='$actorName' and surnames='$actorSurnames' and date = '$actorDate' and nationality = '$actorNationality'");
+			foreach($actorData as $actorItem) {
+				$exist = true;
+				break;
+			}
+						
+			if(!$exist){
+		
+			
+				if ($resultadoInsert = $mysqli->query("INSERT INTO actors (name,surnames,date,nationality) values ('$actorName','$actorSurnames','$actorDate','$actorNationality')")) {
+					$actorCreated = true;
+				}
+			}
+
+			$mysqli->close();
+		}
 
 		return $actorCreated;
 	}
@@ -93,6 +106,14 @@
 		
 
 		return $actorObjectArray;
+	}
+
+	function actorValidate($actorName,$actorSurnames){
+		if(is_string($actorName) && is_string($actorSurnames)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 
