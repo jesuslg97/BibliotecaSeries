@@ -101,7 +101,16 @@
 
 			$serieData = $mysqli->query("SELECT * FROM series WHERE title='$serieTitle'");
 			foreach($serieData as $serieItem) {
-				$exist = true;
+               
+                
+                if($serieItem['id'] == $serieId){
+                    $exist = false;
+                }else{
+                    if($serieItem['title'] == $serieTitle){
+                        $exist = true;
+                    }   
+                }
+				
 				break;
 			}
 			if(!$exist){

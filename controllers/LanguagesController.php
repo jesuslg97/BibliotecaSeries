@@ -61,14 +61,20 @@
 			$mysqli = initConnectionDb();
 			$exist = false;
 
-			$languageData = $mysqli->query("SELECT * FROM languages WHERE name='$languageName' or ISOcode = '$languageISO'");
+			$languageData = $mysqli->query("SELECT * FROM languages WHERE name='$languageName' and ISOcode = '$languageISO'");
+			
 			foreach($languageData as $languageItem) {
+				
 				$exist = true;
 				break;
 			}
+			
 			if(!$exist){
-				if ($resultadoUpdate = $mysqli->query("UPDATE languages set name = '$languageName', isoCode = '$languageISO' where id =  $languageId")) {
+				echo 'ee';
+				if ($resultadoUpdate = $mysqli->query("UPDATE languages set name = '$languageName', ISOcode = '$languageISO' where id =  $languageId")) {
 					$languageEdited = true;
+				}else{
+					
 				}
 			}
 
