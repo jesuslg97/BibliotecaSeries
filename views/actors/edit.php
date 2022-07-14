@@ -33,7 +33,7 @@
                 ?>
                 <div class="row">
                     <div class="col-12">
-                        <h1>Editar idioma</h1>
+                        <h1>Editar Actor</h1>
                     </div>
                     <div class="col-12">
                         <form name="create_actor" action="" method="POST">
