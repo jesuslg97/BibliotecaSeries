@@ -63,7 +63,7 @@
                                         &nbsp;&nbsp;
                                         <form name="delete_actors" action="delete.php" method="POST" style="display: inline;">
                                             <input type="hidden" name="actorId" value="<?php echo $actor->getId();?>" />
-                                            <button type="submit" class="btn btn-danger">Borrar</button>
+                                            <button type="submit" class="btn btn-danger" onclick = "return confirm('¿Realmente desea eliminar?')">Borrar</button>
                                         </form>
                                     </div>
 

@@ -63,7 +63,7 @@
 
                                         <form name="delete_directors" action="delete.php" method="POST" style="display: inline;">
                                             <input type="hidden" name="directorId" value="<?php echo $director->getId();?>" />
-                                            <button type="submit" class="btn btn-danger m-1">Borrar</button>
+                                            <button type="submit" class="btn btn-danger m-1" onclick = "return confirm('¿Realmente desea eliminar?')">Borrar</button>
                                         </form>
                                     </div>
 

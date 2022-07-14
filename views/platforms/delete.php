@@ -20,7 +20,7 @@
 
                     ?>
                     <div class="row">
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success mt-3" role="alert">
                             Plataforma borrada correctamente.<br><a href="list.php">Volver al listado de plataformas.</a>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                 } else {
                     ?>
                     <div class="row">
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger mt-3" role="alert">
                             La plataforma no se ha borrado correctamente.<br><a href="list.php">Volver a intentarlo.</a>
                         </div>
                     </div>

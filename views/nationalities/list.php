@@ -44,7 +44,7 @@
                                     <div class="btn-group" role="group" aria-label="nationalities">
                                         <form name="delete_nationalities" action="delete.php" method="POST" style="display: inline;">
                                             <input type="hidden" name="nationalityId" value="<?php echo $nationality->getId();?>" />
-                                            <button type="submit" class="btn btn-danger">Borrar</button>
+                                            <button type="submit" class="btn btn-danger" onclick = "return confirm('¿Realmente desea eliminar?')">Borrar</button>
                                         </form>
                                     </div>
 
