@@ -117,11 +117,11 @@
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="series">
-                                        <a class="btn btn-success" href="edit.php?id=<?php echo $serie->getId();?>">Editar</a>
+                                        <a class="btn btn-success m-1" href="edit.php?id=<?php echo $serie->getId();?>">Editar</a>
                                         &nbsp;&nbsp;
                                         <form name="delete_series" action="delete.php" method="POST" style="display: inline;">
                                             <input type="hidden" name="serieId" value="<?php echo $serie->getId();?>" />
-                                            <button type="submit" class="btn btn-danger">Borrar</button>
+                                            <button type="submit" class="btn btn-danger m-1">Borrar</button>
                                         </form>
                                     </div>
 

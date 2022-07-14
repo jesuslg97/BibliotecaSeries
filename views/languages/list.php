@@ -43,11 +43,11 @@
                                 
                                 <td>
                                     <div class="btn-group" role="group" aria-label="languages">
-                                        <a class="btn btn-success" href="edit.php?id=<?php echo $language->getId();?>">Editar</a>
+                                        <a class="btn btn-success m-1" href="edit.php?id=<?php echo $language->getId();?>">Editar</a>
 
                                         <form name="delete_languages" action="delete.php" method="POST" style="display: inline;">
                                             <input type="hidden" name="languageId" value="<?php echo $language->getId();?>" />
-                                            <button type="submit" class="btn btn-danger">Borrar</button>
+                                            <button type="submit" class="btn btn-danger m-1">Borrar</button>
                                         </form>
                                     </div>
 

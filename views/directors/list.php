@@ -59,11 +59,11 @@
                                 
                                 <td>
                                     <div class="btn-group" role="group" aria-label="directors">
-                                        <a class="btn btn-success" href="edit.php?id=<?php echo $director->getId();?>">Editar</a>
+                                        <a class="btn btn-success m-1" href="edit.php?id=<?php echo $director->getId();?>">Editar</a>
 
                                         <form name="delete_directors" action="delete.php" method="POST" style="display: inline;">
                                             <input type="hidden" name="directorId" value="<?php echo $director->getId();?>" />
-                                            <button type="submit" class="btn btn-danger">Borrar</button>
+                                            <button type="submit" class="btn btn-danger m-1">Borrar</button>
                                         </form>
                                     </div>
 

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="280e36d3-d0ec-42ab-bfd8-9858edd395b6" name="Default Changelist" comment="">
+    <list default="true" id="280e36d3-d0ec-42ab-bfd8-9858edd395b6" name="Default Changelist" comment="Style pages v1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/env.php" beforeDir="false" afterPath="$PROJECT_DIR$/env.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/actors/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/actors/create.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/actors/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/actors/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/actors/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/actors/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/directors/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/directors/create.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/directors/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/directors/edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/directors/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/directors/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/languages/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/languages/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/languages/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/languages/edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/languages/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/languages/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/nationalities/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/nationalities/list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/platforms/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/platforms/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/nationalities/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/nationalities/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/platforms/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/platforms/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/platforms/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/platforms/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/series/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/series/create.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/series/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/series/edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/series/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/series/list.php" afterDir="false" />
     </list>
@@ -80,8 +83,16 @@
       <workItem from="1657482105547" duration="742000" />
       <workItem from="1657649347526" duration="887000" />
       <workItem from="1657735752585" duration="647000" />
-      <workItem from="1657812703781" duration="6605000" />
+      <workItem from="1657812703781" duration="12806000" />
     </task>
+    <task id="LOCAL-00001" summary="Style pages v1">
+      <created>1657819867742</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1657819867742</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -97,5 +108,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Style pages v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Style pages v1" />
   </component>
 </project>
