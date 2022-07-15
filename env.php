@@ -5,7 +5,7 @@
             $db_user = 'root';
             $db_password = 'root';
             $db_db = 'actividad_1';
-            $db_port = 8889;
+            $db_port = 3308;
 
             $mysqli = @new mysqli(
                 $db_host,

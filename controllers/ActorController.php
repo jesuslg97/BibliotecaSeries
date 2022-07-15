@@ -34,7 +34,7 @@
 
 	function storeActor ($actorName,$actorSurnames,$actorDate,$actorNationality) {
 		$actorCreated = false;
-		if(actorValidate($actorName,$actorSurnames)){
+		if(actorValidate($actorName,$actorSurnames,$actorDate,$actorNationality)){
 
 			$mysqli = initConnectionDb();
 			$exist = false;
@@ -77,17 +77,19 @@
 	}
 
 	function updateActor ($actorId,$actorName,$actorSurnames,$actorDate,$actorNationality) {
-		
-		$mysqli = initConnectionDb();
+		$actorCreated = false;
+		if(actorValidate($actorName,$actorSurnames,$actorDate,$actorNationality)){
+			$mysqli = initConnectionDb();
 
 
-		$actorEdited = false;
+			
 
-	   	if ($resultadoUpdate = $mysqli->query("UPDATE actors set name = '$actorName',surnames='$actorSurnames',date='$actorDate',nationality='$actorNationality' where id =  $actorId")) {
-			$actorEdited = true;
+			if ($resultadoUpdate = $mysqli->query("UPDATE actors set name = '$actorName',surnames='$actorSurnames',date='$actorDate',nationality='$actorNationality' where id =  $actorId")) {
+				$actorEdited = true;
+			}
+
+			$mysqli->close();
 		}
-
-		$mysqli->close();
 
 		return $actorEdited;
 	}
@@ -108,12 +110,18 @@
 		return $actorObjectArray;
 	}
 
-	function actorValidate($actorName,$actorSurnames){
-		if(is_string($actorName) && is_string($actorSurnames)){
+	function actorValidate($actorName,$actorSurnames,$actorDate,$actorNationality){
+		if(is_string($actorName) && is_string($actorSurnames) && validateDate($actorDate) && is_numeric($actorNationality)){
 			return true;
 		}else{
 			return false;
 		}
+	}
+
+	function validateDate($date, $format = 'Y-m-d')
+	{
+		$d = DateTime::createFromFormat($format, $date);
+		return $d && $d->format($format) == $date;
 	}
 
 

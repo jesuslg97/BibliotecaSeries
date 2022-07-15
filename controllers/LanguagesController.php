@@ -33,7 +33,7 @@
 
     function storeLanguage ($languageName,$languageISO) {
 		$languageEdited = false;
-		if(languageValidate($languageName)){
+		if(languageValidate($languageName,$languageISO)){
 			$mysqli = initConnectionDb();
 			$exist = false;
 			
@@ -57,7 +57,7 @@
 
     function updateLanguage ($languageId, $languageName, $languageISO) {
 		$languageEdited = false;
-		if(languageValidate($languageName)){
+		if(languageValidate($languageName,$languageISO)){
 			$mysqli = initConnectionDb();
 			$exist = false;
 
@@ -70,7 +70,6 @@
 			}
 			
 			if(!$exist){
-				echo 'ee';
 				if ($resultadoUpdate = $mysqli->query("UPDATE languages set name = '$languageName', ISOcode = '$languageISO' where id =  $languageId")) {
 					$languageEdited = true;
 				}else{
@@ -131,8 +130,8 @@
 		return $languageObjectArray;
 	}
 
-	function languageValidate($languageName){
-		if(is_string($languageName)){
+	function languageValidate($languageName,$languageISO){
+		if(is_string($languageName) && is_string($languageISO)){
 			return true;
 		}else{
 			return false;

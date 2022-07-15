@@ -34,7 +34,7 @@
 
 	function storeDirector ($directorName,$directorSurnames,$directorDate,$directorNationality) {
 		$directorCreated = false;
-		if(directorValidate($directorName,$directorSurnames)){
+		if(directorValidate($directorName,$directorSurnames,$directorDate,$directorNationality)){
 
 			
 			$mysqli = initConnectionDb();
@@ -75,7 +75,7 @@
 
 	function updateDirector ($directorId,$directorName,$directorSurnames,$directorDate,$directorNationality) {
 		$directorEdited = false;
-		if(directorValidate($directorName,$directorSurnames)){
+		if(directorValidate($directorName,$directorSurnames,$directorDate,$directorNationality)){
 
 			$mysqli = initConnectionDb();
 
@@ -99,11 +99,20 @@
 		return $directorEdited;
 	}
 
-	function directorValidate($directorName,$directorSurnames){
-		if(is_string($directorName) && is_string($directorSurnames)){
+	function directorValidate($directorName,$directorSurnames,$directorDate,$directorNationality){
+		if(is_string($directorName) && is_string($directorSurnames) && validateDate($directorDate) && is_numeric($directorNationality)){
 			return true;
 		}else{
+			
 			return false;
 		}
+	}
+
+	function validateDate($date, $format = 'Y-m-d')
+	{	
+		
+		$d = DateTime::createFromFormat($format, $date);
+
+		return $d && $d->format($format) == $date;
 	}
 ?>
