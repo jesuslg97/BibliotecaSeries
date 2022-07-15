@@ -111,16 +111,18 @@
 	}
 
 	function actorValidate($actorName,$actorSurnames,$actorDate,$actorNationality){
-		if(is_string($actorName) && is_string($actorSurnames) && validateDate($actorDate) && is_numeric($actorNationality)){
+		if(is_string($actorName) && is_string($actorSurnames) && validateDateActor($actorDate) && is_null($actorNationality)){
 			return true;
 		}else{
 			return false;
 		}
 	}
 
-	function validateDate($date, $format = 'Y-m-d')
-	{
+	function validateDateActor($date, $format = 'Y-m-d')
+	{	
+		
 		$d = DateTime::createFromFormat($format, $date);
+
 		return $d && $d->format($format) == $date;
 	}
 

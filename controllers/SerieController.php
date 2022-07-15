@@ -5,7 +5,7 @@
 
 
     function listSeries() {
-
+        
 		$mysqli = initConnectionDb();
 		$serieList = $mysqli->query("SELECT * FROM series");
 
