@@ -40,10 +40,14 @@ CREATE TABLE `actors` (
 --
 
 INSERT INTO `actors` (`id`, `name`, `surnames`, `date`, `nationality`) VALUES
-(2, '2', '2', '2222-02-22', '1'),
-(3, '3', '3', '0333-03-31', '1'),
-(4, '4', '4', '0044-04-04', '1'),
-(5, '5', '5', '5555-05-05', '1');
+(1, 'Úrsula', 'Corberó Delgado', '1989-08-11', '2'),
+(2, 'Pedro', 'González Alonso', '1971-06-21', '2'),
+(3, 'Sophie', 'Turner', '1996-02-21', '1'),
+(4, 'Christopher', 'Harington', '1986-12-26', '1'),
+(5, 'Vanesa', 'Romero Torres', '1978-06-04', '2'),
+(6, 'Pablo', 'Chiapella Cámara', '1976-12-1', '2'),
+(7, 'Gina', 'Carano', '1982-04-16', '1'),
+(8, 'Pedro', 'Pascal', '1975-04-02', '2');
 
 -- --------------------------------------------------------
 
@@ -64,8 +68,10 @@ CREATE TABLE `directors` (
 --
 
 INSERT INTO `directors` (`id`, `name`, `surnames`, `date`, `nationality`) VALUES
-(2, 'Daniel', 'Villalba feo', '2222-02-08', '1'),
-(3, 'Josu', 'Guti', '3222-02-22', '1');
+(1, 'Alejandro', 'Pina Calafi', '1967-06-23', '2'),
+(2, 'David', 'Benioff', '1970-09-25', '1'),
+(3, 'Laura', 'Caballero', '1978-02-18', '2'),
+(4, 'Jonathan', 'Favreau', '1966-10-19', '1');
 
 -- --------------------------------------------------------
 
@@ -84,8 +90,10 @@ CREATE TABLE `languages` (
 --
 
 INSERT INTO `languages` (`id`, `name`, `ISOcode`) VALUES
-(2, 'Españolito', '1235'),
-(3, 'Frances', '7');
+(1, 'Inglés', 'EN'),
+(2, 'Español', 'ES'),
+(3, 'Francés', 'FR'),
+(4, 'Portugués', 'PR');
 
 -- --------------------------------------------------------
 
@@ -103,8 +111,10 @@ CREATE TABLE `nationalities` (
 --
 
 INSERT INTO `nationalities` (`id`, `name`) VALUES
-(1, 'España'),
-(2, 'Francia');
+(1, 'Inglesa'),
+(2, 'Española'),
+(3, 'Francesa'),
+(4, 'Portuguesa');
 
 -- --------------------------------------------------------
 
@@ -123,7 +133,9 @@ CREATE TABLE `platforms` (
 
 INSERT INTO `platforms` (`id`, `name`) VALUES
 (1, 'Netflix'),
-(2, 'Amazon prime');
+(2, 'Amazon prime'),
+(3, 'HBO'),
+(4, 'Disney+');
 
 -- --------------------------------------------------------
 
@@ -143,7 +155,10 @@ CREATE TABLE `series` (
 --
 
 INSERT INTO `series` (`id`, `title`, `platform`, `director`) VALUES
-(12, 'Hola', 2, 3);
+(1, 'La casa de papel', 1, 1),
+(2, 'Juego de tronos', 3, 2),
+(3, 'La que se avecina', 2, 3),
+(4, 'The mandalorian', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -162,7 +177,10 @@ CREATE TABLE `serie_actors` (
 --
 
 INSERT INTO `serie_actors` (`id`, `serie_id`, `actor_id`) VALUES
-(42, 12, 2);
+(1, 1, 1),
+(2, 2, 3),
+(3, 3, 5),
+(4, 4, 7);
 
 -- --------------------------------------------------------
 
@@ -182,9 +200,10 @@ CREATE TABLE `serie_languages` (
 --
 
 INSERT INTO `serie_languages` (`id`, `serie_id`, `language_id`, `type`) VALUES
-(15, 12, 3, 'audio'),
-(16, 12, 2, 'subtitle'),
-(17, 12, 3, 'subtitle');
+(1, 1, 2, 'audio'),
+(2, 2, 4, 'subtitle'),
+(3, 3, 3, 'subtitle'),
+(4, 4, 1, 'audio');
 
 --
 -- Indexes for dumped tables
