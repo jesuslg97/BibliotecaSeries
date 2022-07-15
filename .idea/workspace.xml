@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="280e36d3-d0ec-42ab-bfd8-9858edd395b6" name="Default Changelist" comment="Style form pages v2">
+    <list default="true" id="280e36d3-d0ec-42ab-bfd8-9858edd395b6" name="Default Changelist" comment="confirm delete message">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/actors/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/actors/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/actors/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/actors/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/directors/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/directors/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/directors/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/directors/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/languages/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/languages/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/languages/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/languages/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/nationalities/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/nationalities/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/nationalities/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/nationalities/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/platforms/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/platforms/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/platforms/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/platforms/list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/series/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/series/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/series/list.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/series/list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/series/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/series/edit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="jesus" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -81,7 +76,9 @@
       <workItem from="1657482105547" duration="742000" />
       <workItem from="1657649347526" duration="887000" />
       <workItem from="1657735752585" duration="647000" />
-      <workItem from="1657812703781" duration="14345000" />
+      <workItem from="1657812703781" duration="15572000" />
+      <workItem from="1657900325982" duration="2011000" />
+      <workItem from="1657908314256" duration="1179000" />
     </task>
     <task id="LOCAL-00001" summary="Style pages v1">
       <created>1657819867742</created>
@@ -97,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657826369697</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="confirm delete message">
+      <created>1657827691421</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1657827691421</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +121,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Style pages v1" />
     <MESSAGE value="Style form pages v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Style form pages v2" />
+    <MESSAGE value="confirm delete message" />
+    <option name="LAST_COMMIT_MESSAGE" value="confirm delete message" />
   </component>
 </project>

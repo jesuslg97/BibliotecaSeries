@@ -47,7 +47,7 @@
 
                             <div class="col-4 mt-3">
                                 <label for="serieTitle" class="form-label">Nombre del serie</label>
-                                <input id="serieTitle" name="serieTitle" type="text" placeholder="Introduce el titulo de la serie" class="form-control"  required  required value="<?php if(isset($serieObject)) echo $serieObject->getTitle(); ?>"/>
+                                <input id="serieTitle" name="serieTitle" type="text" placeholder="Introduce el titulo de la serie" class="form-control" required value="<?php if(isset($serieObject)) echo $serieObject->getTitle(); ?>"/>
                             </div>
 
                             <div class="col-4 mt-3">
