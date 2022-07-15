@@ -86,6 +86,19 @@
 
 		$platformDeleted = false;
 		if ($resultado = $mysqli->query("DELETE FROM platforms where id = $platformId")) {
+
+			$serieList = $mysqli->query("SELECT * FROM series where platform = $platformId");
+			
+			foreach($serieList as $serie){
+				$id = $serie['id'];
+
+				$mysqli->query("DELETE FROM series where id = $id");
+
+				$mysqli->query("DELETE FROM serie_actors where serie_id = $id");
+				
+            	$mysqli->query("DELETE FROM serie_languages where serie_id = $id");
+			}
+
 			$platformDeleted = true;
 		}
 

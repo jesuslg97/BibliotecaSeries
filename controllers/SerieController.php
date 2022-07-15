@@ -70,7 +70,7 @@
 
 			$mysqli->query("DELETE FROM serie_actors where serie_id = $idSerie");
 
-            $mysqli->query("DELETE FROM serie_series where serie_id = $idSerie");
+            $mysqli->query("DELETE FROM serie_languages where serie_id = $idSerie");
 
 			$serieDeleted = true;
 		}
